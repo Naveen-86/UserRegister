@@ -13,6 +13,14 @@ public class UserRegister {
         return b1;
     }
 
+    public static String userInput1()
+    {
+        Scanner s = new Scanner(System.in);
+        System.out.println("Enter Last Name : ");
+        String b2 = s.nextLine();
+        return b2;
+    }
+
     public static void main(String[] args) {
         System.out.println("Welcome to User Registration");
         boolean fname = Pattern.matches("^[A-Z]{1}[a-z]{2}[a-z]*",UserRegister.userInput());
@@ -21,6 +29,14 @@ public class UserRegister {
             System.out.println("Invalid Name,Try Again!");
             boolean nfname = Pattern.matches("^[A-Z]{1}[a-z]{2}[a-z]*",UserRegister.userInput());
             System.out.println(nfname);
+        }
+
+        boolean lname = Pattern.matches("^[A-Z]{1}[a-z]{2}[a-z]*",UserRegister.userInput1());
+        System.out.println(fname);
+        if(lname == false) {
+            System.out.println("Invalid Name,Try Again!");
+            boolean nlname = Pattern.matches("^[A-Z]{1}[a-z]{2}[a-z]*",UserRegister.userInput1());
+            System.out.println(nlname);
         }
     }
 }
