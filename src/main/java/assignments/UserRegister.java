@@ -29,6 +29,14 @@ public class UserRegister {
         return b3;
     }
 
+    public static String userInput3()
+    {
+        Scanner s = new Scanner(System.in);
+        System.out.println("Enter Mobile Number : ");
+        String b4 = s.nextLine();
+        return b4;
+    }
+
     public static void main(String[] args) {
         System.out.println("Welcome to User Registration");
         boolean fname = Pattern.matches("^[A-Z]{1}[a-z]{2}[a-z]*",UserRegister.userInput());
@@ -53,5 +61,13 @@ public class UserRegister {
             boolean nemail = Pattern.matches("^[a][b][c][.][a-z]{3}[@][b][l][.][c][o][.][a-z]{2}",UserRegister.userInput2());
             System.out.println(nemail);
         }
+        boolean num = Pattern.matches("^[+91]+ [6-9]{1}[0-9]{9}",UserRegister.userInput3());
+        System.out.println(num);
+        if(num == false) {
+            System.out.println("Invalid Name,Try Again!");
+            boolean nnum = Pattern.matches("^[+91]+ [6-9]{1}[0-9]{9}",UserRegister.userInput3());
+            System.out.println(nnum);
+        }
+
     }
 }
