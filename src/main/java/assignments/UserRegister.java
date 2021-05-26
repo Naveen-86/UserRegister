@@ -21,6 +21,14 @@ public class UserRegister {
         return b2;
     }
 
+    public static String userInput2()
+    {
+        Scanner s = new Scanner(System.in);
+        System.out.println("Enter Email : ");
+        String b3 = s.nextLine();
+        return b3;
+    }
+
     public static void main(String[] args) {
         System.out.println("Welcome to User Registration");
         boolean fname = Pattern.matches("^[A-Z]{1}[a-z]{2}[a-z]*",UserRegister.userInput());
@@ -37,6 +45,13 @@ public class UserRegister {
             System.out.println("Invalid Name,Try Again!");
             boolean nlname = Pattern.matches("^[A-Z]{1}[a-z]{2}[a-z]*",UserRegister.userInput1());
             System.out.println(nlname);
+        }
+        boolean email = Pattern.matches("^[a][b][c][.][a-z]{3}[@][b][l][.][c][o][.][a-z]{2}",UserRegister.userInput2());
+        System.out.println(email);
+        if(email == false) {
+            System.out.println("Invalid Name,Try Again!");
+            boolean nemail = Pattern.matches("^[a][b][c][.][a-z]{3}[@][b][l][.][c][o][.][a-z]{2}",UserRegister.userInput2());
+            System.out.println(nemail);
         }
     }
 }
