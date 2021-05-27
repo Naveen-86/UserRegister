@@ -1,73 +1,113 @@
 package assignments;
-
 import java.util.Scanner;
-import java.util.regex.Pattern;
+import java.util.regex.*;
+
 
 public class UserRegister {
 
-    public static String userInput()
-    {
-        Scanner s = new Scanner(System.in);
-        System.out.println("Enter First Name : ");
-        String b1 = s.nextLine();
-        return b1;
+    static String fName;
+    static String lName;
+    static String email;
+    static String mobileNum;
+    static String password;
+
+    //uc1-first-name
+    static String firstNameCheck(){
+        Scanner scan = new Scanner(System.in);
+        System.out.println("\nEnter first name:(start with cap and minimum 3 characters)\n");
+        fName = scan.nextLine();
+        return fName;
     }
 
-    public static String userInput1()
-    {
-        Scanner s = new Scanner(System.in);
-        System.out.println("Enter Last Name : ");
-        String b2 = s.nextLine();
-        return b2;
+    //uc2-last-name
+    static String lastNameCheck(){
+        Scanner scan = new Scanner(System.in);
+        System.out.println("\nEnter last name:\n(start with cap and minimum 3 characters)\n");
+        lName = scan.nextLine();
+        return lName;
     }
 
-    public static String userInput2()
-    {
-        Scanner s = new Scanner(System.in);
-        System.out.println("Enter Email : ");
-        String b3 = s.nextLine();
-        return b3;
+    //uc3-email
+    static String emailCheck(){
+        Scanner scan = new Scanner(System.in);
+        System.out.println("\nEnter email id:\n(E.g. abc.xyz@bl.co.in\n(abc, bl & co are manditory) and  \n(xyz & in are optional) with precise @ and . positions)\n");
+        email = scan.nextLine();
+        return email;
     }
 
-    public static String userInput3()
-    {
-        Scanner s = new Scanner(System.in);
-        System.out.println("Enter Mobile Number : ");
-        String b4 = s.nextLine();
-        return b4;
+    //uc4-mobile-phone
+    static String mobileNumCheck(){
+        Scanner scan = new Scanner(System.in);
+        System.out.println("\nEnter mobile number:\n(country code(91) follow by space and 10 digit mobile number)\n");
+        mobileNum = scan.nextLine();
+        return mobileNum;
     }
 
+    //uc5-password-minimum8
+    static String passwordCheck(){
+        Scanner scan = new Scanner(System.in);
+        System.out.println("\nEnter password:\n(minimum 8 characters)\n");
+        password = scan.nextLine();
+        return password;
+    }
+
+    //main method
     public static void main(String[] args) {
-        System.out.println("Welcome to User Registration");
-        boolean fname = Pattern.matches("^[A-Z]{1}[a-z]{2}[a-z]*",UserRegister.userInput());
-        System.out.println(fname);
-        if(fname == false) {
-            System.out.println("Invalid Name,Try Again!");
-            boolean nfname = Pattern.matches("^[A-Z]{1}[a-z]{2}[a-z]*",UserRegister.userInput());
-            System.out.println(nfname);
+
+        //first name check using regEx
+        boolean res1 = Pattern.matches("^[A-Z]{1}[a-z]{2}[a-z]*", UserRegister.firstNameCheck());
+        System.out.println(res1);
+
+        // if false then try again
+        while(res1 == false){
+            System.out.println("Try again!");
+            res1 = Pattern.matches("^[A-Z]{1}[a-z]{2}[a-z]*", UserRegister.firstNameCheck());
         }
 
-        boolean lname = Pattern.matches("^[A-Z]{1}[a-z]{2}[a-z]*",UserRegister.userInput1());
-        System.out.println(fname);
-        if(lname == false) {
-            System.out.println("Invalid Name,Try Again!");
-            boolean nlname = Pattern.matches("^[A-Z]{1}[a-z]{2}[a-z]*",UserRegister.userInput1());
-            System.out.println(nlname);
-        }
-        boolean email = Pattern.matches("^[a][b][c][.][a-z]{3}[@][b][l][.][c][o][.][a-z]{2}",UserRegister.userInput2());
-        System.out.println(email);
-        if(email == false) {
-            System.out.println("Invalid Name,Try Again!");
-            boolean nemail = Pattern.matches("^[a][b][c][.][a-z]{3}[@][b][l][.][c][o][.][a-z]{2}",UserRegister.userInput2());
-            System.out.println(nemail);
-        }
-        boolean num = Pattern.matches("^[+91]+ [6-9]{1}[0-9]{9}",UserRegister.userInput3());
-        System.out.println(num);
-        if(num == false) {
-            System.out.println("Invalid Name,Try Again!");
-            boolean nnum = Pattern.matches("^[+91]+ [6-9]{1}[0-9]{9}",UserRegister.userInput3());
-            System.out.println(nnum);
+        //last name check using regEx
+        boolean res2 = Pattern.matches("^[A-Z]{1}[a-z]{2}[a-z]*", UserRegister.lastNameCheck());
+        System.out.println(res2);
+
+        //if false then try again
+        while(res2 == false){
+            System.out.println("\nTry again!");
+            res2 = Pattern.matches("^[A-Z]{1}[a-z]{2}[a-z]*", UserRegister.lastNameCheck());
         }
 
+        //email check using regEx
+        boolean res3 = Pattern.matches("^[a][b][c][.][a-z]{3}[@][b][l][.][c][o][.][a-z]{2}", UserRegister.emailCheck());
+        System.out.println(res3);
+
+        //if false trying again
+        while(res3 == false){
+            System.out.println("\nTry again!");
+            res3 = Pattern.matches("^[a][b][c][.][a-z]{3}[@][b][l][.][c][o][.][a-z]{2}", UserRegister.emailCheck());
+        }
+
+        //mobile number check using regEx
+        boolean res4 = Pattern.matches("^[+91]+ [6-9]{1}[0-9]{9}", UserRegister.mobileNumCheck());
+        System.out.println(res4);
+
+        //if false
+        while(res4 == false){
+            System.out.println("\nTry again!");
+            res4 = Pattern.matches("^[+91]+ [6-9]{1}[0-9]{9}", UserRegister.mobileNumCheck());
+        }
+
+        //password check using regEx
+        boolean res5 = Pattern.matches("^[A-Za-z]{8,}", UserRegister.passwordCheck());
+        System.out.println(res5);
+
+        //if false
+        while(res5 == false){
+            System.out.println("\nTry again!");
+            res5 = Pattern.matches("^[A-Za-z]{8,}", UserRegister.passwordCheck());
+        }
+
+        //print statements
+        System.out.println("\nFirst Name: " + fName);
+        System.out.println("\nLast Name: " + lName);
+        System.out.println("\nEmail: " + email);
+        System.out.println("\nMobile number: " + mobileNum);
     }
 }
