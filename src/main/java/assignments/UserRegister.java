@@ -95,13 +95,13 @@ public class UserRegister {
         }
 
         //password check using regEx
-        boolean res5 = Pattern.matches("^[A-Za-z]{8,}", UserRegister.passwordCheck());
+        boolean res5 = Pattern.matches("(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z]).{8,}", UserRegister.passwordCheck());
         System.out.println(res5);
 
         //if false
         while(res5 == false){
             System.out.println("\nTry again!");
-            res5 = Pattern.matches("^[A-Za-z]{8,}", UserRegister.passwordCheck());
+            res5 = Pattern.matches("(?=.*[0-9])(?=.*[A-Z])(?=.*[a-z]).{8,}", UserRegister.passwordCheck());
         }
 
         //print statements
